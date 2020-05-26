@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "709622874506",
+    "firebase_url": "https://ecu-flood-app.firebaseio.com",
+    "project_id": "ecu-flood-app",
+    "storage_bucket": "ecu-flood-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709622874506:android:d3d2e9a918cbcef41bc873",
+        "android_client_info": {
+          "package_name": "com.ecu.ecufloodapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709622874506-k285spd23sosrsd4ci77938mvh6kva8r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ecu.ecufloodapp",
+            "certificate_hash": "4b10fadf3cac65ef0ca87dca121ece969b147073"
+          }
+        },
+        {
+          "client_id": "709622874506-d4o8bp2q8n8evkl01ajtssfashebrp5t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRDOdzqvjeeyvmyjDMbQ8nX34bzhcMvPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709622874506-d4o8bp2q8n8evkl01ajtssfashebrp5t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
