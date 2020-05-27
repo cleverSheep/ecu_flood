@@ -66,6 +66,7 @@
                         android:textStyle="normal" />
 
                     <TextView
+                        android:id="@+id/detail_well_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
@@ -88,6 +89,7 @@
                         android:textStyle="normal" />
 
                     <TextView
+                        android:id="@+id/detail_well_latlng"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
@@ -106,10 +108,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:text="Precipitation"
+                        android:text="Elevation"
                         android:textStyle="normal" />
 
                     <TextView
+                        android:id="@+id/detail_well_elevation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
@@ -133,7 +136,7 @@
         app:layout_constraintTop_toBottomOf="@+id/well_cardview">
 
         <TextView
-            android:id="@+id/latlng_label"
+            android:id="@+id/water_level_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Underground Water Level"
@@ -142,15 +145,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/latlng_value"
+            android:id="@+id/water_level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-- --"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/latlng_label"
-            app:layout_constraintTop_toBottomOf="@+id/latlng_label" />
+            app:layout_constraintStart_toStartOf="@+id/water_level_label"
+            app:layout_constraintTop_toBottomOf="@+id/water_level_label" />
 
         <Button
             android:layout_width="wrap_content"
@@ -160,9 +163,9 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/latlng_value"
+            app:layout_constraintBottom_toBottomOf="@+id/water_level"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/latlng_value" />
+            app:layout_constraintTop_toTopOf="@+id/water_level" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
