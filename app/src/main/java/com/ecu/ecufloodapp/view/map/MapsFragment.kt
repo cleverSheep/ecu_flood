@@ -10,12 +10,14 @@ import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ecu.ecufloodapp.R
+import com.ecu.ecufloodapp.extensions.formatWellId
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.data.kml.KmlLayer
 import kotlinx.android.synthetic.main.fragment_maps.*
+import timber.log.Timber
 
 
 /**
@@ -59,8 +61,17 @@ class MapsFragment : Fragment() {
                 mMap,
                 R.raw.kmlfile, context
             )
-            layer.addLayerToMap()
-            printKmlId(layer)
+            layer.apply {
+                addLayerToMap()
+                setOnFeatureClickListener { feature ->
+                    Log.d("MapsFragment", feature.getProperty("name").formatWellId().toString())
+                    findNavController().navigate(
+                        MapsFragmentDirections.actionMapsFragmentToLocationDetail(
+                            feature.getProperty("name")
+                        )
+                    )
+                }
+            }
         }
     }
 
@@ -75,14 +86,6 @@ class MapsFragment : Fragment() {
             val uiOptions =
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
             decorView?.systemUiVisibility = uiOptions
-        }
-    }
-
-    private fun printKmlId(layer: KmlLayer) {
-        layer.setOnFeatureClickListener {
-            val directions =
-                MapsFragmentDirections.actionMapsFragmentToLocationDetail(it.id)
-            findNavController().navigate(directions)
         }
     }
 

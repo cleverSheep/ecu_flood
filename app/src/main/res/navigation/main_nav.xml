@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/locationDetail"
-        android:name="com.ecu.testingmap.view.detail.LocationDetail"
+        android:name="com.ecu.ecufloodapp.view.detail.LocationDetail"
         android:label="Back">
         <argument
             android:name="sensor_name"

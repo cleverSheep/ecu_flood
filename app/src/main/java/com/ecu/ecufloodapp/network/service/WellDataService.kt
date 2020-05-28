@@ -1,14 +1,25 @@
 package com.ecu.ecufloodapp.network.service
 
 import com.ecu.ecufloodapp.model.WellData
+import com.ecu.ecufloodapp.network.client.WellDataClient
+import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 class WellDataService {
     companion object {
+        val gsonBuilder = GsonBuilder()
+        val gson = gsonBuilder.create()
+        val gsonConverterFactory = GsonConverterFactory.create(gson)
+
         // Retrofit is not an instance of this service so it needs to be set here
         private val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.0.10:5000")
+            .baseUrl("http://192.168.0.10:5000/")
+            .addConverterFactory(gsonConverterFactory)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-        val service = retrofit.create(WellData::class.java)
+
+        fun service() = retrofit.create(WellDataClient::class.java)
     }
 }

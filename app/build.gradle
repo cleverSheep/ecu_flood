@@ -64,7 +64,31 @@ dependencies {
     def lottieVersion = '3.4.0'
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
+    // Retrofit, OkHttp, Timber
+    def retrofitVersion = "2.5.0"
+    def okHttpVersion = "4.2.1"
+    def timberVersion = "4.7.1"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
     // Retrofit and GSON Support
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    //  RxJava Support
+    implementation "io.reactivex.rxjava3:rxjava:3.0.4"
+
+    // RxAndroid
+    def rxandroid_version = '2.1.1'
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
+    // Reactive Streams (convert Observable to LiveData)
+    def reactivestreams_version = "1.1.1"
+    implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
+
+    // Rx-Retrofit Call Adapter
+    def rxcalladapter_version = '2.5.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxcalladapter_version"
 }
