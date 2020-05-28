@@ -21,11 +21,29 @@ class WellDetailTestSuite {
         assertEquals(formatted_id, 1)
     }
 
-    private fun combineLatLng(lat: Double, long: Double): String {
-        val latitide = String.format("%.2f", lat)
-        val longitude = String.format("%.2f", long)
-        return "$latitide,$longitude"
+    @Test
+    fun seperateLatLng_ReturnListList() {
+        val latlng_combo = "34.65,-77.05"
+        val latlng_list = latlng_combo.separateLatLng()
+        assertEquals(latlng_list[0], 34.65, 0.0)
+        assertEquals(latlng_list[1], -77.05, 0.0)
     }
+
+}
+
+/*private fun seperateLatLng(latlngCombo: String): List<Double> {
+    val string_list = latlngCombo.split(",")
+    val lat = string_list[0].toDouble()
+    val long = string_list[1].toDouble()
+    return listOf(lat, long)
+}*/
+
+private fun combineLatLng(lat: Double, long: Double): String {
+    val latitide = String.format("%.2f", lat)
+    val longitude = String.format("%.2f", long)
+    return "$latitide,$longitude"
 }
 
 private fun String.formatWellId(): Int = Character.getNumericValue(toCharArray()[length - 1])
+
+private fun String.separateLatLng(): List<Double> = listOf(split(",")[0].toDouble(), split(",")[1].toDouble())

@@ -1,11 +1,11 @@
 package com.ecu.ecufloodapp.model
 
 data class WellData(
-    val elevation: Double,
-    val id: Int,
-    val landcover: Int,
-    val latitude: Double,
-    val longitude: Double,
-    val precipitation: Int,
-    val underground_water: Double
+    var elevation: Double = 0.0,
+    var id: Int = 0,
+    var landcover: Int = 0,
+    var latitude: Double = 0.0,
+    var longitude: Double = 0.0,
+    var precipitation: Int,
+    var underground_water: Double
 )

@@ -7,3 +7,4 @@ fun combineLatLng(wellData: WellData): String {
     val longitude = String.format("%.2f", wellData.longitude)
     return "$latitide,$longitude"
 }
+

@@ -1,5 +1,6 @@
 package com.ecu.ecufloodapp.view.detail
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,16 +8,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ecu.ecufloodapp.R
 import com.ecu.ecufloodapp.model.WellData
-import kotlinx.android.synthetic.main.well_list_item.view.*
-import org.w3c.dom.Text
 
 class WellItemsAdapter(private var well_items: ArrayList<WellData>) :
     RecyclerView.Adapter<WellItemsAdapter.ViewHolder>() {
 
     fun updateList(list_items: List<WellData>) {
+        Log.d("WellItemsAdapter", "List size (before): ${well_items.size}")
         well_items.clear()
         well_items.addAll(list_items)
         notifyDataSetChanged()
+        Log.d("WellItemsAdapter", "List size (after): ${well_items.size}")
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

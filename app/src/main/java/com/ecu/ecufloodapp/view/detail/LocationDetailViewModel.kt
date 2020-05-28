@@ -20,17 +20,11 @@ class LocationDetailViewModel : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
     private val wellDataClient: WellDataClient = WellDataService.service()
 
-    private val well_id = MutableLiveData<Int>()
-    fun wellId(): MutableLiveData<Int> = well_id
+    private val well_data = MutableLiveData<WellData>()
+    val wellData: LiveData<WellData> = well_data
 
-    private val well_lat_lng = MutableLiveData<String>()
-    fun well_lat_lng() = well_lat_lng
-
-    private val elevation = MutableLiveData<Double>()
-    fun elevation() = elevation
-
-    private val list_well_items = mutableListOf<WellData>()
-    private val observable_well_items = MutableLiveData<List<WellData>>()
+    private val list_well_items = arrayListOf<WellData>()
+    private val observable_well_items = MutableLiveData<ArrayList<WellData>>()
 
     fun fetchStaticWellData(id: Int) {
         Log.d("LocationDetailViewModel", "Fetch well data")
@@ -41,9 +35,7 @@ class LocationDetailViewModel : ViewModel() {
                 .subscribeWith(object : DisposableSingleObserver<WellData>() {
                     override fun onSuccess(data: WellData) {
                         Log.d("LocationDetailViewModel", "Well data: ${data.id}")
-                        well_id.postValue(data.id)
-                        well_lat_lng.postValue(combineLatLng(data))
-                        elevation.postValue(data.elevation)
+                        well_data.postValue(data)
                     }
 
                     override fun onError(e: Throwable) {
@@ -57,10 +49,11 @@ class LocationDetailViewModel : ViewModel() {
 
     fun addWellItem(well_item: WellData) {
         list_well_items.add(well_item)
+        Log.d("LocationDetailViewModel", "ViewModel list size: ${list_well_items.size}")
         observable_well_items.value = list_well_items
     }
 
-    fun fetchWellItems(): LiveData<List<WellData>> = observable_well_items
+    fun fetchWellItems(): LiveData<ArrayList<WellData>> = observable_well_items
 
     override fun onCleared() {
         super.onCleared()
