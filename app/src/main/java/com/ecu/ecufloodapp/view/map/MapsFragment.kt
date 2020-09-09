@@ -1,6 +1,5 @@
 package com.ecu.ecufloodapp.view.map
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,7 +16,6 @@ import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.data.kml.KmlLayer
 import kotlinx.android.synthetic.main.fragment_maps.*
-import timber.log.Timber
 
 
 /**
@@ -49,13 +47,12 @@ class MapsFragment : Fragment() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        //fullScreenAll()
         mapView.getMapAsync { googleMap ->
             mMap = googleMap
 
             // Add a marker in Sydney and move the camera
-            val initial_location = LatLng(34.65, -77.09)
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(initial_location))
+            val initialLocation = LatLng(34.65, -77.09)
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(initialLocation))
             mMap.animateCamera(CameraUpdateFactory.zoomTo(12f), 2000, null);
             val layer = KmlLayer(
                 mMap,
@@ -75,19 +72,6 @@ class MapsFragment : Fragment() {
         }
     }
 
-
-    private fun fullScreenAll() {
-        if (Build.VERSION.SDK_INT in 12..18) { // lower api
-            val v = activity?.window?.decorView
-            v?.systemUiVisibility = View.GONE
-        } else {
-            //for new api versions.
-            val decorView = activity?.window?.decorView
-            val uiOptions =
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-            decorView?.systemUiVisibility = uiOptions
-        }
-    }
 
     override fun onResume() {
         super.onResume()

@@ -15,11 +15,11 @@ class WellDataService {
 
         // Retrofit is not an instance of this service so it needs to be set here
         private val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.0.10:5000/")
+            .baseUrl("https://192.168.0.25:5000/")
             .addConverterFactory(gsonConverterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
 
-        fun service() = retrofit.create(WellDataClient::class.java)
+        fun service(): WellDataClient = retrofit.create(WellDataClient::class.java)
     }
 }
